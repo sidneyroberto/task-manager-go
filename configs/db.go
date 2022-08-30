@@ -10,8 +10,7 @@ import (
 
 var DB *gorm.DB
 
-func ConnectToDatabase() {
-	dsn := EnvMongoURI()
+func ConnectToDatabase(dsn string) {
 	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	if err != nil {

@@ -5,8 +5,8 @@ services:
     environment:
       POSTGRES_PASSWORD: senha123
       POSTGRES_USER: dev
-      POSTGRES_DB: task-manager
+      POSTGRES_MULTIPLE_DATABASES: task_manager,task_manager_test
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - ./pg-init-scripts:/docker-entrypoint-initdb.d
     ports:
       - '5432:5432'
