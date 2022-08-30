@@ -10,6 +10,7 @@ import (
 	"task-manager-go/configs"
 	"task-manager-go/inputs"
 	"task-manager-go/models"
+	"task-manager-go/outputs"
 	"task-manager-go/routes"
 	"testing"
 )
@@ -60,4 +61,14 @@ func TestCreateTask(t *testing.T) {
 	if res.Code != 201 {
 		t.Errorf("Expected 201, received %d", res.Code)
 	}
+
+	content := res.Body.Bytes()
+	var taskOutput outputs.CreateTaskOutput
+	err = json.Unmarshal(content, &taskOutput)
+	if err != nil {
+		log.Fatal("Error during Unmarshal(): ", err)
+	}
+
+	task := taskOutput.Task
+	t.Log("Task: ", task)
 }
