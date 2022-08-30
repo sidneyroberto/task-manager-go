@@ -7,3 +7,9 @@ Para executar a API, primeiramente suba o contêiner do arquivo **docker-compose
 ```
 go run main.go
 ```
+
+Para executar os testes de integração, execute o comando:
+
+```
+go test ./...
+```
