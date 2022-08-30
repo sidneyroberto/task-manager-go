@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"strings"
 	"task-manager-go/configs"
 	"task-manager-go/inputs"
 	"task-manager-go/models"
@@ -21,6 +22,17 @@ func CreateTask() gin.HandlerFunc {
 		currentDateTime := time.Now()
 		if !currentDateTime.Before(input.Deadline) {
 			ctx.JSON(http.StatusBadRequest, gin.H{"error": "Deadline must be in future"})
+			return
+		}
+
+		severities := map[string]bool{
+			"low":    true,
+			"medium": true,
+			"high":   true,
+		}
+
+		if !severities[strings.ToLower(input.Severity)] {
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid severity. Valid severities: low, medium, or high"})
 			return
 		}
 

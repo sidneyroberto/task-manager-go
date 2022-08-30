@@ -1,0 +1,13 @@
+[{
+  "description": "Secar a louça",
+  "deadline": "2022-09-03T00:00:00Z",
+  "severity": "high"
+}, {
+  "description": "Lavar a louça",
+  "deadline": "2022-09-02T00:00:00Z",
+  "severity": "medium"
+}, {
+  "description": "Guardar a louça",
+  "deadline": "2022-09-04T00:00:00Z",
+  "severity": "low"
+}]
